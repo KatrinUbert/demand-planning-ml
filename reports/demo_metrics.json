@@ -1,0 +1,44 @@
+{
+  "run_date": "2026-10-16",
+  "data_source": "deterministic synthetic demand",
+  "seed": 42,
+  "weeks": 160,
+  "skus": 24,
+  "data_sha256": "8b2b0e1878fd9b2f67370bcd9a401449201bfe9cce09401942714c8bdac7a3c5",
+  "versions": {
+    "python": "3.12.14",
+    "lightgbm": "4.7.0",
+    "sklearn": "1.9.1",
+    "pandas": "2.3.3",
+    "numpy": "2.5.4"
+  },
+  "splits": {
+    "train": {
+      "start": "2023-01-02",
+      "end": "2024-03-18",
+      "rows": 1536,
+      "lightgbm": {"mae": 3.3602, "wape": 0.0372, "pinball_q50": 1.6801, "pinball_q85": 0.9279, "coverage_q85": 0.8509},
+      "rolling_baseline": {"mae": 5.8579, "wape": 0.0648, "pinball_q50": 2.929, "pinball_q85": 1.84, "coverage_q85": 0.8522}
+    },
+    "validation": {
+      "start": "2024-03-25",
+      "end": "2024-08-19",
+      "rows": 528,
+      "lightgbm": {"mae": 5.0255, "wape": 0.0525, "pinball_q50": 2.5128, "pinball_q85": 1.5681, "coverage_q85": 0.8106},
+      "rolling_baseline": {"mae": 6.4905, "wape": 0.0678, "pinball_q50": 3.2453, "pinball_q85": 1.9312, "coverage_q85": 0.9413}
+    },
+    "test": {
+      "start": "2024-08-26",
+      "end": "2025-01-20",
+      "rows": 528,
+      "lightgbm": {"mae": 4.6818, "wape": 0.0555, "pinball_q50": 2.3409, "pinball_q85": 1.4933, "coverage_q85": 0.8068},
+      "rolling_baseline": {"mae": 5.8125, "wape": 0.069, "pinball_q50": 2.9062, "pinball_q85": 1.837, "coverage_q85": 0.8049}
+    }
+  },
+  "inventory_simulation": {
+    "split": "test",
+    "assumptions": {"lead_time_weeks": 0, "forecast_horizon_weeks": 1, "initial_inventory": 0, "holding_cost_per_unit_week": 0.6, "margin_per_sold_unit": 4.0, "lost_sales_no_backorders": true, "unlimited_supply": true, "currency": "synthetic units"},
+    "lightgbm": {"holding_cost": 1799.4, "lost_margin": 1536.0, "total_inventory_cost": 3335.4, "margin_after_holding": 174684.6, "unit_fill_rate": 0.9914},
+    "rolling_baseline": {"holding_cost": 2225.4, "lost_margin": 1896.0, "total_inventory_cost": 4121.4, "margin_after_holding": 173898.6, "unit_fill_rate": 0.9893}
+  }
+}
